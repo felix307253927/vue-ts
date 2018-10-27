@@ -9,30 +9,50 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Observable } from 'rxjs'
-import Component from 'vue-class-component'
-console.log('about')
+import { Component, Mixins } from 'vue-property-decorator'
 
 @Component<About>({
   domStreams: [
     'setName$'
   ],
   subscriptions() {
-    const ob = Observable.of(23).map(data => data)
-    console.log(ob)
     return {
       age$: Observable.of(23).map(data => data),
-      name$: this.setName$.map((e: any) => 'myName').startWith('')
+      name$: this.setName$.map((e) => {
+        console.log(e);
+        return "set name"
+      }).startWith('click')
     }
   }
 })
 export default class About extends Vue {
-  setName$: any
+  name: string = 'test'
+  setName$!: Observable<Event>
+  beforeRouteEnter(to: any, from: any, next: Function) {
+    console.log('beforeRouteEnter')
+    next()
+  }
+  beforeRouteLeave(to: any, from: any, next: Function) {
+    console.log('leave');
+    next()
+  }
+  beforeCreate() {
+    console.log('breforeCreate');
+  }
+  created() {
+    console.log('created');
+  }
+  mounted() {
+    console.log('mounted');
+  }
+  updated() {
+    console.log("updated");
+  }
+  activated() {
+    console.log('activated');
+  }
+  destroyed() {
+    console.log('destroyed');
+  }
 }
-
-let obs = Observable.from([1, 2, 3, 4, 5])
-obs.subscribe(x => console.log('a', x))
-obs.subscribe(x => console.log('b', x))
-setTimeout(() => {
-  obs.subscribe(x => console.log('object', x))
-}, 500)
 </script>

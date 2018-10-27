@@ -1,8 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Component from 'vue-class-component';
 import Home from './views/Home.vue'
 
 Vue.use(Router)
+
+// 注册 router hooks
+Component.registerHooks([
+  'beforeRouteEnter',
+  'beforeRouteLeave',
+  'beforeRouteUpdate'
+])
 
 export default new Router({
   routes: [
