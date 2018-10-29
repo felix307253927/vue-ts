@@ -20,8 +20,9 @@ function createWindow(): void {
     height: 700,
     minWidth: 1280,
     maxHeight: 700,
+    frame: true,
     center: true,
-    fullscreen: true,
+    fullscreen: false,
   })
 
   if (isDevelopment) {
@@ -37,6 +38,9 @@ function createWindow(): void {
   win.on('closed', () => {
     win = null
   })
+  if(win && !win.isMaximized()){
+    win.maximize()
+  }
 }
 
 // Quit when all windows are closed.

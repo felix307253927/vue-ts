@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>This is an about page!</h1>
     <span>姓名：{{ name$ }}</span>
     <span>年龄：{{ age$ }}</span>
     <button v-stream:click="setName$">点击设置name的值</button>
