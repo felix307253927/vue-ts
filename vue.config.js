@@ -7,11 +7,11 @@ module.exports = {
         copyright: "Copyright © 2018 ${author}",
         linux: {
           target: "deb",
-          icon: "./icons"
+          icon: "./public/icons"
         },
         win: {
           target: "nsis",
-          icon: "icons\\icon.ico"
+          icon: "public\\icons\\icon.ico"
         },
         nsis: {
           oneClick: false,
